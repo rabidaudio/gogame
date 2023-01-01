@@ -1,32 +1,21 @@
 package main
 
-import (
-	"image"
-	"image/color"
+// type Wall struct {
+// 	bounds image.Rectangle
+// 	color  color.Color
+// }
 
-	"github.com/hajimehoshi/ebiten"
-)
+// func (w *Wall) Tick(g *Game) error {
+// 	// box2d.B2Body
+// 	return nil // walls don't do anything
+// }
 
-type Wall struct {
-	bounds image.Rectangle
-	color  color.Color
-}
+// func (w *Wall) Img() *ebiten.Image {
+// 	i, _ := ebiten.NewImage(w.bounds.Dx(), w.bounds.Dy(), ebiten.FilterDefault)
+// 	i.Fill(w.color)
+// 	return i
+// }
 
-func (w *Wall) Tick(g *Game) error {
-	return nil // walls don't do anything
-}
-
-func (w *Wall) Draw(screen *ebiten.Image) {
-	i, _ := ebiten.NewImage(w.bounds.Dx(), w.bounds.Dy(), ebiten.FilterDefault)
-	if w.color == nil {
-		panic("Wtf")
-	}
-	i.Fill(w.color)
-	op := &ebiten.DrawImageOptions{}
-	op.GeoM.Translate(float64(w.bounds.Min.X), float64(w.bounds.Min.Y))
-	screen.DrawImage(i, op)
-}
-
-// func (w *Wall) Bounds() image.Rectangle {
-// 	return w.bounds
+// func (w *Wall) Transform(op *ebiten.DrawImageOptions) {
+// 	op.GeoM.Translate(float64(w.bounds.Min.X), float64(w.bounds.Min.Y))
 // }
